@@ -42,7 +42,7 @@ bot.on('message', async (msg) => {
 
   if (isValidHttpUrl(msg)) {
     const VIEWPORT = { width: 1920, height: 1080}
-    const browser = await puppeteer.launch();
+    const browser = await puppeteer.launch({ args: ['--no-sandbox'] });
     const page = await browser.newPage();
     await page.setViewport(VIEWPORT);
     await page.goto(String(msg));
