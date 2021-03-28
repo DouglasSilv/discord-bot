@@ -30,7 +30,7 @@ module.exports = {
 };
 
 const getDayOfTheWeek = () => {
-  const numberOfTheDay = new Date().getDay();
+  const numberOfTheDay = new Date(new Date().toLocaleString("en-US", {timeZone: "America/Sao_Paulo"})).getDay();
 
   switch (numberOfTheDay) {
     case 1:
@@ -45,7 +45,7 @@ const getDayOfTheWeek = () => {
       return 'Sextouuuu';
     case 6:
       return 'Sabadouuuu';
-    case 6:
+    case 7:
       return 'Domingouuu';
   }
 }  
