@@ -45,7 +45,7 @@ const getDayOfTheWeek = () => {
       return 'Sextouuuu';
     case 6:
       return 'Sabadouuuu';
-    case 7:
+    case 0:
       return 'Domingouuu';
   }
 }  
