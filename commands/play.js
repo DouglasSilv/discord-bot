@@ -1,6 +1,7 @@
 const ytdl = require('ytdl-core');
 const YouTube = require("discord-youtube-api");
 const { MessageEmbed } = require('discord.js');
+const { checkPermissionForSpeak } = require('../utils');
 
 const youTube = new YouTube(process.env.YOUTUBE_KEY);
 
