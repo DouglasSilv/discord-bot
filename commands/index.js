@@ -7,5 +7,6 @@ module.exports = {
   Pause: require('./pause'),
   Queue: require('./queue'),
   Remove: require('./remove'),
-  Moveall: require('./moveall')
+  Moveall: require('./moveall'),
+  Say: require('./say'),
 };

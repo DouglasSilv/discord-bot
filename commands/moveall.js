@@ -1,8 +1,5 @@
-const { get } = require('http');
-const { createWriteStream } = require('fs');
-const { getAudioUrl } = require('google-tts-api');
 const { compareTwoStrings } = require('string-similarity');
-const { checkPermissionForSpeak } = require('../utils');
+const { checkPermissionForSpeak, getGoogleTranslateVoiceMessage } = require('../utils');
 
 const WELCOME_MESSAGE_FILE_NAME = 'welcome-message.mp3';
 
@@ -51,17 +48,9 @@ const getDayOfTheWeek = () => {
 }  
 
 const playWelcomeVoiceMessage = async (bestMatch, message, voiceChannel) => {
-  const urlWelcomeMessage = getAudioUrl(`Boa jogatina de ${bestMatch.name} gurizadaaa! ${getDayOfTheWeek()}!`, {
-    lang: 'pt-br',
-    slow: false,
-    host: 'http://translate.google.com',
-  });
-  const file = createWriteStream(WELCOME_MESSAGE_FILE_NAME);
-  get(urlWelcomeMessage, (response) => {
-    response.pipe(file);
-  });
-
   checkPermissionForSpeak(message, voiceChannel);
+  getGoogleTranslateVoiceMessage(`Boa jogatina de ${bestMatch.name} gurizadaaa! ${getDayOfTheWeek()}!`, 
+                                  WELCOME_MESSAGE_FILE_NAME);
 
   const connection = await voiceChannel.join();
   try {
