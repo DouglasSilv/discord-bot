@@ -15,8 +15,9 @@
     "discord.js": "^12.2.0",
     "dotenv": "^8.2.0",
     "ffmpeg": "0.0.4",
+    "ffmpeg-static": "^4.2.8",
     "fluent-ffmpeg": "^2.1.2",
-    "puppeteer": "^5.2.1",
+    "google-tts-api": "^2.0.2",
     "string-similarity": "^4.0.2",
     "ytdl-core": "^3.2.1"
   },

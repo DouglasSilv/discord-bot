@@ -1,7 +1,5 @@
 require('dotenv').config();
 
-const puppeteer = require('puppeteer');
-
 const Client = require('./client/Client');
 
 const bot = new Client();
@@ -39,35 +37,4 @@ bot.on('message', async (msg) => {
     msg.reply('Erro executando o comando ;-;');
   }
 
-
-  /*if (isValidHttpUrl(msg)) {
-    const VIEWPORT = { width: 1920, height: 1080}
-    const browser = await puppeteer.launch({ args: ['--no-sandbox'] });
-    const page = await browser.newPage();
-    await page.setViewport(VIEWPORT);
-    await page.goto(String(msg));
-    const screenshot = await page.screenshot({
-      waitUntil: 'domcontentloaded',
-    });
-    await page.close();
-    await browser.close();
-    msg.channel.send(`Poupei o seu trabalho e montei um preview do site para você ${msg.author} ( ͡° ͜ʖ ͡°)`, 
-      {
-        files: [screenshot]
-      }
-    );
-  }*/
-
 });
-
-const isValidHttpUrl = (string) => {
-  let url;
-
-  try {
-    url = new URL(string);
-  } catch (_) {
-    return false;  
-  }
-
-  return url.protocol === "http:" || url.protocol === "https:";
-}

@@ -25,13 +25,7 @@ const execute = async (message) => {
         "Você precisa estar em um canal de voz!"
       );
 
-    const permissions = voiceChannel.permissionsFor(message.client.user);
-
-    if (!permissions.has("CONNECT") || !permissions.has("SPEAK")) {
-      return message.channel.send(
-        'Eu preciso de permissão!'
-      );
-    }
+    checkPermissionForSpeak(message, voiceChannel);
 
     if (serverQueue && serverQueue.connection.dispatcher.paused) {
       serverQueue.connection.dispatcher.resume();
@@ -109,8 +103,8 @@ const play = (message, song) => {
       play(message, serverQueue.songs[0]);
     })
     .on('error', error => console.error(error));
-  dispatcher.setVolumeLogarithmic(serverQueue.volume / 5);
-  serverQueue.textChannel
+    dispatcher.setVolumeLogarithmic(serverQueue.volume / 5);
+    serverQueue.textChannel
     .send(buildMessage(message, song))
     .then((message) => {
       message.react("🎵");
