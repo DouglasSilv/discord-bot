@@ -5,8 +5,7 @@ const Client = require('./client/Client');
 const bot = new Client();
 const { TOKEN, PREFIX } = process.env;
 
-const botCommands = require('./commands');
-
+const botCommands = require('./commands'); 
 
 Object.keys(botCommands).map((key) => {
   bot.commands.set(`${PREFIX}${botCommands[key].name}`, botCommands[key]);

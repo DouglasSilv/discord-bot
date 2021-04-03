@@ -1,5 +1,5 @@
 const { PREFIX } = process.env;
-const { checkPermissionForSpeak, getGoogleTranslateVoiceMessage } = require('../utils');
+const { checkPermissionForSpeak, getTtsmp3VoiceMessage } = require('../utils');
 
 const SAY_MESSAGE_FILE_NAME = 'say-message.mp3'
 
@@ -16,8 +16,8 @@ module.exports = {
     }
 
     checkPermissionForSpeak(message, voiceChannel);
-    const audioMessage = args.join().replace(`${PREFIX}say`, '');
-    getGoogleTranslateVoiceMessage(audioMessage, 
+    const audioMessage = args.join(' ').replace(`${PREFIX}say`, '');
+    await getTtsmp3VoiceMessage(audioMessage, 
       SAY_MESSAGE_FILE_NAME);
 
     const connection = await voiceChannel.join();

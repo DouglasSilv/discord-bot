@@ -1,5 +1,5 @@
 const { compareTwoStrings } = require('string-similarity');
-const { checkPermissionForSpeak, getGoogleTranslateVoiceMessage } = require('../utils');
+const { checkPermissionForSpeak, getTtsmp3VoiceMessage } = require('../utils');
 
 const WELCOME_MESSAGE_FILE_NAME = 'welcome-message.mp3';
 
@@ -49,7 +49,7 @@ const getDayOfTheWeek = () => {
 
 const playWelcomeVoiceMessage = async (bestMatch, message, voiceChannel) => {
   checkPermissionForSpeak(message, voiceChannel);
-  getGoogleTranslateVoiceMessage(`Boa jogatina de ${bestMatch.name} gurizadaaa! ${getDayOfTheWeek()}!`, 
+  await getTtsmp3VoiceMessage(`Boa jogatina de ${bestMatch.name} gurizada! ${getDayOfTheWeek()}!`, 
                                   WELCOME_MESSAGE_FILE_NAME);
 
   const connection = await voiceChannel.join();
